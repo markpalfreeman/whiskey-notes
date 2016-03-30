@@ -4,7 +4,7 @@
   "description": "Online book of whiskey tasting notes",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --hot --inline",
+    "start": "webpack-dev-server --hot --inline --history-api-fallback",
     "build": "webpack -p",
     "test": "standard"
   },
