@@ -40,22 +40,22 @@ const Note = React.createClass({
       <div className=''>
         <form name='whiskey-note' className='whiskey-note'>
           <label htmlFor=''>Whiskey Name</label>
-          <input name='name' type='text' ref='name' onChange={this.editField} value={this.state.name}/>
+          <input name='name' type='text' ref='name' onChange={this.editField} value={this.state.name}/><br/>
           <label htmlFor=''>Distiller</label>
-          <input name='distiller' type='text' ref='distiller' onChange={this.editField} value={this.state.distiller}/>
+          <input name='distiller' type='text' ref='distiller' onChange={this.editField} value={this.state.distiller}/><br/>
           <label htmlFor=''>Age</label>
-          <input name='age' type='text' ref='age' onChange={this.editField} value={this.state.age}/>
+          <input name='age' type='text' ref='age' onChange={this.editField} value={this.state.age}/><br/>
           <label htmlFor=''>Origin</label>
-          <input name='origin' type='text' ref='origin' onChange={this.editField} value={this.state.origin}/>
+          <input name='origin' type='text' ref='origin' onChange={this.editField} value={this.state.origin}/><br/>
           <label htmlFor=''>Price</label>
-          <input name='price' type='text' ref='price' onChange={this.editField} value={this.state.price}/>
+          <input name='price' type='text' ref='price' onChange={this.editField} value={this.state.price}/><br/>
           <label htmlFor=''>Date Sampled</label>
-          <input name='date' type='date' ref='date' onChange={this.editField} value={this.state.date}/>
+          <input name='date' type='date' ref='date' onChange={this.editField} value={this.state.date}/><br/>
           <label htmlFor=''>Rating</label>
-          <input name='rating' type='range' min='1' max='5' ref='rating' onChange={this.editField} value={this.state.rating}/>
+          <input name='rating' type='range' min='1' max='5' ref='rating' onChange={this.editField} value={this.state.rating}/><br/>
 
           <label htmlFor=''>Notes</label>
-          <textarea name='notes' ref='notes' onChange={this.editField} value={this.state.notes}/>
+          <textarea name='notes' ref='notes' onChange={this.editField} value={this.state.notes}/><br/>
 
           <label htmlFor=''>Color Meter</label>
           <input name='color' type='range' min='1' max='5' ref='color' onChange={this.editField} value={this.state.color}/>
