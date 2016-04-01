@@ -1,6 +1,4 @@
 import React from 'react'
-import NotesList from '../NotesList'
-import { notes } from '../data/notes.json'
 
 const Notes = React.createClass({
   propTypes: {

@@ -13,7 +13,7 @@ const Index = React.createClass({
     return (
       <Router history={browserHistory}>
         <Route path='/' component={App}>
-          <IndexRoute component={Notes}/>
+          <IndexRoute component={Notes}/> {/* need to fix this to default to NotesList view */}
           <Route path='about' component={About}/>
           <Route path='notes' component={Notes}>
             <IndexRoute component={NotesList}/>
