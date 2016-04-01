@@ -25,10 +25,16 @@ module.exports = {
       loaders: ['eslint'],
       exclude: /node_modules/
     }],
-    loaders: [{
-      test: /\.jsx?$/,
-      loaders: ['react-hot', 'babel'],
-      exclude: /node_modules/
-    }]
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        loaders: ['react-hot', 'babel'],
+        exclude: /node_modules/
+      },
+      {
+        test: /\.json$/,
+        loaders: ['json']
+      }
+    ]
   }
 }
