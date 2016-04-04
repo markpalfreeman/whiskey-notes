@@ -1,15 +1,26 @@
 import React from 'react'
-import { Link } from 'react-router'
-import { notes } from './data/notes'
+import NoteListItem from './NoteListItem'
+
+/*
+ * USAGE:
+ * <NotesList notes={data.notes}/>
+ */
+
+const { array, func } = React.PropTypes
 
 const NotesList = React.createClass({
+  propTypes: {
+    notes: array,
+    deleteNote: func
+  },
+
   render () {
+    const { notes, deleteNote } = this.props
+
     return (
       <ul className='notes-list'>
         {notes.map((note) => (
-          <Link to={`/notes/${note.id}`} key={note.id}>
-            <li className='notes-list__note'>{note.name} ({note.rating}/5)</li>
-          </Link>
+          <NoteListItem note={note} deleteNote={deleteNote} key={note.id}/>
         ))}
       </ul>
     )
