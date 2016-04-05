@@ -1,11 +1,13 @@
 import React from 'react'
-import { notes } from './data/notes' // hack until we have real data
+import { browserHistory } from 'react-router'
 
-const { object } = React.PropTypes
+const { object, array } = React.PropTypes
 
 const Note = React.createClass({
   propTypes: {
-    params: object
+    params: object,
+    location: object,
+    notes: array
   },
 
   getInitialState () {
@@ -26,7 +28,7 @@ const Note = React.createClass({
   },
 
   getCurrentNote (id) {
-    return notes.filter((note) => (
+    return this.props.notes.filter((note) => (
       id === note.id
     ))[0]
   },
@@ -35,10 +37,19 @@ const Note = React.createClass({
     this.setState({ [event.target.name]: event.target.value })
   },
 
+  handleSubmit (event) {
+    event.preventDefault()
+
+    console.log('SAVE it!')
+    // this.props.saveNote(this.state)
+
+    browserHistory.push('/notes')
+  },
+
   render () {
     return (
       <div className=''>
-        <form name='whiskey-note' className='whiskey-note'>
+        <form name='whiskey-note' className='whiskey-note' onSubmit={this.handleSubmit}>
           <label htmlFor=''>Whiskey Name</label>
           <input name='name' type='text' ref='name' onChange={this.editField} value={this.state.name}/><br/>
           <label htmlFor=''>Distiller</label>
