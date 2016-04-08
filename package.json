@@ -12,6 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.9.1",
+    "re-base": "^1.5.1",
     "react": "^0.14.8",
     "react-dom": "^0.14.8",
     "react-router": "^2.0.1"

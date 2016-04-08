@@ -8,16 +8,15 @@ const NotesPage = React.createClass({
     location: object,
     params: object,
     notes: array,
-    addNote: func,
-    deleteNote: func,
-    saveNote: func
+    saveNote: func,
+    deleteNote: func
   },
 
   render () {
-    const { location, params, notes, addNote, deleteNote, saveNote } = this.props
+    const { location, params, notes, saveNote, deleteNote } = this.props
     let headerTitle = 'Notes'
 
-    // This feels hacky
+    // Sorta hacky?
     if (location.pathname === '/notes/new') {
       headerTitle = 'New note:'
     } else if (params.id) {
@@ -29,9 +28,8 @@ const NotesPage = React.createClass({
         <h2>{headerTitle}</h2>
         {React.cloneElement(this.props.children, {
           notes: notes,
-          addNote: addNote,
-          deleteNote: deleteNote,
-          saveNote: saveNote
+          saveNote: saveNote,
+          deleteNote: deleteNote
         })}
       </div>
     )

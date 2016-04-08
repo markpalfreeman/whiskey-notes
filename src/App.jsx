@@ -1,6 +1,9 @@
 import React from 'react'
 import Header from './Header'
-import { notes } from './data/notes'
+// import { notes } from './data/notes'
+
+import Rebase from 're-base'
+const base = Rebase.createClass('https://whiskey-notes.firebaseio.com')
 
 const { any } = React.PropTypes
 
@@ -11,24 +14,38 @@ const App = React.createClass({
 
   getInitialState () {
     return {
-      notes: notes
+      notes: []
     }
   },
 
-  addNote (note) {
-    this.state.notes.push(note)
+  componentDidMount () {
+    // Sync data from Firebase
+    base.syncState('notes', {
+      context: this,
+      state: 'notes',
+      asArray: true
+    })
+  },
+
+  saveNote (note) {
+    const { notes } = this.state
+
+    if (note.id) {
+      // If editing existing note
+      notes[note.id] = note
+    } else {
+      // Otherwise, add it to notes list
+      notes.push(note)
+    }
+
     this.setState({
       notes: this.state.notes
     })
   },
 
-  deleteNote (noteId) {
-    let {notes} = this.state
-
-    notes = notes.filter((n) => (
-      // Get new array without ID match
-      noteId !== n.id
-    ))
+  deleteNote (id) {
+    const { notes } = this.state
+    delete notes[id]
 
     this.setState({
       notes: notes
@@ -41,7 +58,7 @@ const App = React.createClass({
         <Header/>
         {React.cloneElement(this.props.children, {
           notes: this.state.notes,
-          addNote: this.addNote,
+          saveNote: this.saveNote,
           deleteNote: this.deleteNote
         })}
       </div>

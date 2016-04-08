@@ -1,55 +1,58 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
 
-const { object, array } = React.PropTypes
+const { object, array, func } = React.PropTypes
 
 const Note = React.createClass({
   propTypes: {
     params: object,
     location: object,
-    notes: array
+    notes: array,
+    saveNote: func
   },
 
   getInitialState () {
-    const note = this.getCurrentNote(this.props.params.id) || {}
-
-    return {
-      name: note.name || '',
-      distiller: note.distiller || '',
-      age: note.age || '',
-      origin: note.origin || '',
-      price: note.price || '',
-      date: note.date || null,
-      rating: note.rating || null,
-      notes: note.notes || '',
-      color: note.color || ''
-      // flavor: note.flavor || {}
+    let note = {
+      id: null,
+      name: '',
+      distiller: '',
+      age: '',
+      origin: '',
+      price: '',
+      date: null,
+      rating: null,
+      notes: '',
+      color: null
+    }
+    if (!this.props.params.id) {
+      return note
+    } else {
+      note = this.props.notes[this.props.params.id] || {}
+      note.id = this.props.params.id
+      return note
     }
   },
 
-  getCurrentNote (id) {
-    return this.props.notes.filter((note) => (
-      id === note.id
-    ))[0]
+  componentWillReceiveProps (nextProps) {
+    if (this.props.params.id) {
+      this.setState(nextProps.notes[this.props.params.id])
+    }
   },
 
   editField (event) {
     this.setState({ [event.target.name]: event.target.value })
   },
 
-  handleSubmit (event) {
+  handleSave (event) {
     event.preventDefault()
-
-    console.log('SAVE it!')
-    // this.props.saveNote(this.state)
-
+    this.props.saveNote(this.state)
     browserHistory.push('/notes')
   },
 
   render () {
     return (
       <div className=''>
-        <form name='whiskey-note' className='whiskey-note' onSubmit={this.handleSubmit}>
+        <form name='whiskey-note' className='whiskey-note' ref='whiskey-note' onSubmit={this.handleSave}>
           <label htmlFor=''>Whiskey Name</label>
           <input name='name' type='text' ref='name' onChange={this.editField} value={this.state.name}/><br/>
           <label htmlFor=''>Distiller</label>
