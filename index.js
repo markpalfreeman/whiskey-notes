@@ -27,4 +27,4 @@ const Index = React.createClass({
   }
 })
 
-ReactDOM.render(<Index />, document.getElementById('app'))
+ReactDOM.render(<Index />, document.getElementById('root'))

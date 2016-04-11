@@ -1,3 +1,31 @@
+require('babel-core/register')
+
+var React = require('react')
+var ReactDOMServer = require('react-dom/server')
+var Index = require('./Index').default
+// const NotesList = require('./src/NotesList').default
+
+var config = require('hjs-webpack')
+
+module.exports = config({
+  in: 'index.js',
+  out: 'public',
+  clearBeforeBuild: true,
+  html: function (data) {
+    // const appHtml = ReactDOMServer.renderToString(React.createElement(Index))
+    // const notesListHtml = ReactDOMServer.renderToString(React.createElement(NotesList))
+
+    return {
+      '200.html': data.defaultTemplate(),
+      'index.html': data.defaultTemplate()
+    }
+  }
+})
+
+/* ****************
+ * Testing HJS Webpack for HTML pre-render
+ * ****************
+
 const path = require('path')
 
 module.exports = {
@@ -38,3 +66,4 @@ module.exports = {
     ]
   }
 }
+*/

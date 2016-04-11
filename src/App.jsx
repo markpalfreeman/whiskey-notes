@@ -1,6 +1,5 @@
 import React from 'react'
 import Header from './Header'
-// import { notes } from './data/notes'
 
 import Rebase from 're-base'
 const base = Rebase.createClass('https://whiskey-notes.firebaseio.com')
