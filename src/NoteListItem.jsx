@@ -21,10 +21,11 @@ const NoteListItem = React.createClass({
 
   render () {
     const { note, id } = this.props
+    const rating = note.rating ? <span>{note.rating}</span> : null
 
     return (
       <li className='notes-list__note'>
-        <Link to={`/notes/${id}`}>{note.name} ({note.rating}/5)</Link>
+        <Link to={`/notes/${id}`}>{note.name} {rating}</Link>
         <button onClick={this.handleDeleteNote}>[ X ]</button>
       </li>
     )
