@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "hjs-dev-server",
-    "build": "webpack -p",
+    "build": "BABEL_ENV=production webpack",
+    "predeploy": "npm run build",
+    "deploy": "surge public whiskey-notes.surge.sh",
     "test": "standard"
   },
   "author": "Mark Palfreeman <markpalfreeman@gmail.com>",
