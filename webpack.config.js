@@ -1,40 +1,7 @@
-const path = require('path')
+var config = require('hjs-webpack')
 
-module.exports = {
-  devtool: 'eval',
-  entry: [
-    './index'
-  ],
-  output: {
-    path: path.join(__dirname, '/public'),
-    filename: 'app.js',
-    publicPath: '/public'
-  },
-  resolve: {
-    extensions: ['', '.js', '.jsx', '.json']
-  },
-  stats: {
-    colors: true,
-    reasons: true,
-    progress: false,
-    chunks: false
-  },
-  module: {
-    preLoaders: [{
-      test: /\.jsx?$/,
-      loaders: ['eslint'],
-      exclude: /node_modules/
-    }],
-    loaders: [
-      {
-        test: /\.jsx?$/,
-        loaders: ['react-hot', 'babel'],
-        exclude: /node_modules/
-      },
-      {
-        test: /\.json$/,
-        loaders: ['json']
-      }
-    ]
-  }
-}
+module.exports = config({
+  in: 'index.js',
+  out: 'public',
+  clearBeforeBuild: true
+})
