@@ -24,14 +24,14 @@ const NotesPage = React.createClass({
     }
 
     return (
-      <div>
-        <h2>{headerTitle}</h2>
+      <article>
+        <h2 className='page__title'>{headerTitle}</h2>
         {React.cloneElement(this.props.children, {
           notes: notes,
           saveNote: saveNote,
           deleteNote: deleteNote
         })}
-      </div>
+      </article>
     )
   }
 })

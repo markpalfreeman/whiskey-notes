@@ -18,7 +18,7 @@ const NotesList = React.createClass({
     const { notes, deleteNote } = this.props
 
     return (
-      <ul className='notes-list'>
+      <ul className='note-list'>
         {notes.map((note, index) => (
           <NoteListItem note={note} deleteNote={deleteNote} id={index} key={index}/>
         ))}

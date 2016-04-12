@@ -92,11 +92,12 @@ const Note = React.createClass({
           <input type='range' min='1' max='5' ref='flavor.balance' onBlur={this.editField}/>
           <input type='range' min='1' max='5' ref='flavor.linger' onBlur={this.editField}/>
           */}
-
-          <button type='submit'>Save</button>
+          <footer>
+            <button type='submit'>Save</button>
+          </footer>
         </form>
 
-        <pre><code>{JSON.stringify(this.state, null, 2)}</code></pre>
+        {/* <pre><code>{JSON.stringify(this.state, null, 2)}</code></pre> */}
       </div>
     )
   }

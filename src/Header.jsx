@@ -4,12 +4,13 @@ import { Link } from 'react-router'
 const Header = React.createClass({
   render () {
     return (
-      <header className='main-header'>
-        <h1 className='logo'><Link to='/'>Whiskey Notes</Link></h1>
-        <Link to='/notes/new'>New Note</Link><br/>
-        <Link to='/notes'>Notes</Link><br/>
-        <Link to='/about'>About</Link><br/>
-        <Link to='/asdf'>404</Link>
+      <header className='header'>
+        <h1 className='header__logo'><Link to='/'>Whiskey Notes</Link></h1>
+        <nav className='header__nav'>
+          <Link to='/notes/new' className='header__nav__link'>+</Link>
+          {/* <Link to='/notes' className='header__nav__link'>Notes</Link>
+          <Link to='/about' className='header__nav__link'>About</Link> */}
+        </nav>
       </header>
     )
   }
