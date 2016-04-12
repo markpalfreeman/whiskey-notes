@@ -1,3 +1,5 @@
+require('./src/sass/app.sass')
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
@@ -7,13 +9,22 @@ import NotesPage from './src/pages/NotesPage'
 import NoteList from './src/NoteList'
 import Note from './src/Note'
 import FourOhFour from './src/404'
+import WebFont from 'webfontloader'
 
 const Index = React.createClass({
+  componentDidMount () {
+    WebFont.load({
+      google: {
+        families: ['Rubik:700']
+      }
+    })
+  },
+
   render () {
     return (
       <Router history={browserHistory}>
         <Route path='/' component={App}>
-          <IndexRoute component={NoteList}/> {/* need to fix this to default to NotesList view */}
+          <IndexRoute component={NoteList}/> {/* Fix to share layout across app but drop in page content */}
           <Route path='about' component={About}/>
           <Route path='notes' component={NotesPage}>
             <IndexRoute component={NoteList}/>
