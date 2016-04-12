@@ -1,25 +1,23 @@
-require('./src/sass/app.sass')
+require('./sass/app.sass')
 
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
-import App from './src/App'
-import About from './src/pages/AboutPage'
-import NotesPage from './src/pages/NotesPage'
-import NoteList from './src/NoteList'
-import Note from './src/Note'
-import FourOhFour from './src/404'
+import App from './components/App'
+import About from './pages/AboutPage'
+import NotesPage from './pages/NotesPage'
+import NoteList from './components/NoteList'
+import Note from './components/Note'
+import FourOhFour from './pages/404'
 import WebFont from 'webfontloader'
 
-const Index = React.createClass({
-  componentDidMount () {
-    WebFont.load({
-      google: {
-        families: ['Rubik:700']
-      }
-    })
-  },
+WebFont.load({
+  google: {
+    families: ['Rubik:700']
+  }
+})
 
+const Index = React.createClass({
   render () {
     return (
       <Router history={browserHistory}>
