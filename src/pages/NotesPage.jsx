@@ -13,19 +13,15 @@ const NotesPage = React.createClass({
   },
 
   render () {
-    const { location, params, notes, saveNote, deleteNote } = this.props
-    let headerTitle = 'Notes'
+    const { notes, saveNote, deleteNote } = this.props
 
-    // Sorta hacky?
-    if (location.pathname === '/notes/new') {
-      headerTitle = 'New note:'
-    } else if (params.id) {
-      headerTitle = 'Edit note:'
-    }
+    // // Sorta hacky?
+    // if (location.pathname === '/notes/new') {
+    //   headerTitle = 'New note:'
+    // }
 
     return (
       <article>
-        <h2 className='page__title'>{headerTitle}</h2>
         {React.cloneElement(this.props.children, {
           notes: notes,
           saveNote: saveNote,

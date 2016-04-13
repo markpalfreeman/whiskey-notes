@@ -67,12 +67,11 @@ const Note = React.createClass({
           <input name='date' type='date' ref='date' onChange={this.editField} value={this.state.date}/><br/>
           <label htmlFor=''>Rating</label>
           <input name='rating' type='range' min='1' max='5' ref='rating' onChange={this.editField} value={this.state.rating}/><br/>
+          <label htmlFor=''>Color Meter</label>
+          <input name='color' type='range' min='1' max='5' ref='color' onChange={this.editField} value={this.state.color}/>
 
           <label htmlFor=''>Notes</label>
           <textarea name='notes' ref='notes' onChange={this.editField} value={this.state.notes}/><br/>
-
-          <label htmlFor=''>Color Meter</label>
-          <input name='color' type='range' min='1' max='5' ref='color' onChange={this.editField} value={this.state.color}/>
 
           {/*
           <label htmlFor=''>Tasting [Wheel]</label>
