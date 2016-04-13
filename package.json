@@ -7,7 +7,7 @@
     "start": "hjs-dev-server",
     "build": "BABEL_ENV=production webpack",
     "predeploy": "npm run build",
-    "deploy": "surge public whiskey-notes.surge.sh",
+    "deploy": "surge public whiskeynot.es",
     "test": "standard"
   },
   "author": "Mark Palfreeman <markpalfreeman@gmail.com>",
