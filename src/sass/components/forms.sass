@@ -1,4 +1,60 @@
 ul
 
   li
-    margin-bottom: 0.5rem    
+    margin-bottom: 0.5rem
+
+input:not([type='submit']),
+textarea
+  width: 100%
+  padding: 0.5rem
+  font-size: 1rem
+  margin-bottom: 1rem
+  font-weight: bold
+
+
+=input-slider-track
+  width: 100%
+  height: 0.5rem
+  background-color: whitesmoke
+  border: none
+  border-radius: 3px
+
+=input-slider-thumb($browser: null)
+  @if $browser == 'webkit'
+    -webkit-appearance: none
+  border: none
+  height: 1.2rem
+  width: 1.2rem
+  border-radius: 50%
+  background-color: saddlebrown
+  margin-top: -0.4rem
+
+input[type='range']
+  padding: 0
+  -webkit-appearance: none
+
+  &::-webkit-slider-runnable-track
+    +input-slider-track
+  &::-moz-range-track
+    +input-slider-track
+  &::ms-
+
+  &::-webkit-slider-thumb
+    +input-slider-thumb('webkit')
+  &::-moz-range-thumb
+    +input-slider-thumb
+  &::-ms-thumb
+    +input-slider-thumb
+
+  &:hover
+    cursor: pointer
+  &:focus
+    outline: none
+    &::-webkit-slider-runnable-track
+      background-color: lightgray
+
+label
+  display: block
+  padding-bottom: 0.25rem
+  font-size: 0.85 rem
+  color: slategray
