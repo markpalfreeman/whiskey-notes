@@ -2,6 +2,7 @@ import React from 'react'
 import { browserHistory } from 'react-router'
 
 const { object, array, func } = React.PropTypes
+const ratings = ['Clear', 'Straw', 'Honey', 'Gold', 'Amber', 'Caramel', 'Mahogany']
 
 const Note = React.createClass({
   propTypes: {
@@ -65,10 +66,10 @@ const Note = React.createClass({
           <input name='price' type='text' ref='price' onChange={this.editField} value={this.state.price}/><br/>
           <label htmlFor=''>Date Sampled</label>
           <input name='date' type='date' ref='date' onChange={this.editField} value={this.state.date}/><br/>
-          <label htmlFor=''>Rating</label>
+          <label htmlFor=''>Rating: <span className=''>{this.state.rating}</span></label>
           <input name='rating' type='range' min='1' max='5' ref='rating' onChange={this.editField} value={this.state.rating}/><br/>
-          <label htmlFor=''>Color Meter</label>
-          <input name='color' type='range' min='1' max='5' ref='color' onChange={this.editField} value={this.state.color}/>
+          <label htmlFor=''>Color: <span className=''>{ratings[this.state.color]}</span></label>
+          <input name='color' type='range' className='whiskey-note__color' min='0' max='6' ref='color' onChange={this.editField} value={this.state.color}/>
 
           <label htmlFor=''>Notes</label>
           <textarea name='notes' ref='notes' onChange={this.editField} value={this.state.notes}/><br/>

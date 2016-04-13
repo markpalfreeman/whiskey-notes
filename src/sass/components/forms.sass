@@ -22,11 +22,11 @@ textarea
 =input-slider-thumb($browser: null)
   @if $browser == 'webkit'
     -webkit-appearance: none
-  border: none
+  border: 3px solid darkred
   height: 1.2rem
   width: 1.2rem
   border-radius: 50%
-  background-color: saddlebrown
+  background-color: white
   margin-top: -0.4rem
 
 input[type='range']
@@ -37,7 +37,16 @@ input[type='range']
     +input-slider-track
   &::-moz-range-track
     +input-slider-track
-  &::ms-
+  &::-ms-track
+    +input-slider-track
+
+  &.whiskey-note__color
+    &::-webkit-slider-runnable-track
+      background-image: linear-gradient(to right, whitesmoke 0%, khaki 20%, brown)
+    &::-moz-range-track
+      background-image: linear-gradient(to right, whitesmoke 0%, khaki 20%, brown)
+    &::-ms-track
+      background-image: linear-gradient(to right, whitesmoke 0%, khaki 20%, brown)
 
   &::-webkit-slider-thumb
     +input-slider-thumb('webkit')
