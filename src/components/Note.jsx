@@ -16,31 +16,33 @@ const Note = React.createClass({
   },
 
   getInitialState () {
+    return this.getCurrentNote(this.props) || {}
+  },
+
+  componentWillReceiveProps (nextProps) {
+    this.state = this.getCurrentNote(nextProps)
+    this.setState(this.state)
+  },
+
+  getCurrentNote (props) {
     let note = {
-      id: null,
       name: '',
       distiller: '',
       age: '',
       origin: '',
       price: '',
-      date: null,
+      date: new Date().toJSON().slice(0, 10),
       rating: null,
       color: null,
       notes: '',
       flavor: {}
     }
-    if (!this.props.params.id) {
+
+    if (props.params.notePath === 'new') {
       return note
     } else {
-      note = this.props.notes[this.props.params.id] || {}
-      note.id = this.props.params.id
+      note = props.notes[this.props.params.notePath]
       return note
-    }
-  },
-
-  componentWillReceiveProps (nextProps) {
-    if (this.props.params.id) {
-      this.setState(nextProps.notes[this.props.params.id])
     }
   },
 
@@ -76,7 +78,7 @@ const Note = React.createClass({
           <input name='color' type='range' className='whiskey-note__color' min='0' max='6' ref='color' onChange={this.editField} value={this.state.color}/>
 
           <label htmlFor=''>Notes</label>
-          <textarea name='notes' ref='notes' onChange={this.editField} value={this.state.notes}/><br/>
+          <textarea name='notes' ref='notes' onChange={this.editField} value={this.state.notes} rows='5'/><br/>
 
           {/*
           <label htmlFor=''>Flavor <em>(Experimental &amp; broken!)</em></label>

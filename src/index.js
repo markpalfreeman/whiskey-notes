@@ -26,8 +26,7 @@ const Index = React.createClass({
           <Route path='about' component={About}/>
           <Route path='notes' component={NotesPage}>
             <IndexRoute component={NoteList}/>
-            <Route path='new' component={Note}/>
-            <Route path=':id' component={Note}/>
+            <Route path=':notePath' component={Note}/>
           </Route>
           <Route path='*' component={FourOhFour}/>
         </Route>
