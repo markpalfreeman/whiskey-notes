@@ -53,7 +53,7 @@ const Note = React.createClass({
   handleSave (event) {
     event.preventDefault()
     this.props.saveNote(this.state)
-    browserHistory.push('/notes')
+    browserHistory.push('/')
   },
 
   render () {
