@@ -92,8 +92,11 @@ const Note = React.createClass({
           <label htmlFor=''>Notes</label>
           <textarea name='notes' ref='notes' onChange={this.editField} value={this.state.notes}/><br/>
 
-          <label htmlFor=''>Flavor <em>(Experimental &amp; Fake!)</em></label>
+          {/*
+          <label htmlFor=''>Flavor <em>(Experimental &amp; broken!)</em></label>
           <FlavorChart data={this.state.flavor} options={flavorChartOptions}/>
+          */}
+
           {/*
           <label htmlFor=''>Tasting [Wheel]</label>
           <input name='flavor.darkFruit' type='range' min='1' max='5' ref='flavor.darkFruit' onBlur={this.editField}/>
