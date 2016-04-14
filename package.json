@@ -14,9 +14,11 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.9.1",
+    "chart.js": "^1.0.2",
     "hjs-webpack": "^8.1.0",
     "re-base": "^1.5.1",
     "react": "^0.14.8",
+    "react-chartjs": "^0.7.3",
     "react-dom": "^0.14.8",
     "react-router": "^2.0.1",
     "webfontloader": "^1.6.24"
