@@ -1,11 +1,11 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
-import FlavorChart from './FlavorChart'
+// import FlavorChart from './FlavorChart'
 import RatingStars from './RatingStars'
 
 const { object, array, func } = React.PropTypes
 const ratings = ['Clear', 'Straw', 'Honey', 'Gold', 'Amber', 'Caramel', 'Mahogany']
-const flavorChartOptions = {}
+// const flavorChartOptions = {}
 
 const Note = React.createClass({
   propTypes: {
@@ -27,22 +27,7 @@ const Note = React.createClass({
       rating: null,
       color: null,
       notes: '',
-      flavor: {
-        darkFruit: 4,
-        citrusFruit: 2,
-        floral: 1,
-        spicy: 3,
-        herbal: 2,
-        malty: 3,
-        toffee: 4,
-        woody: 4,
-        tannic: 2,
-        char: 4,
-        sweet: 5,
-        body: 3,
-        balance: 3,
-        finish: 2
-      }
+      flavor: {}
     }
     if (!this.props.params.id) {
       return note
@@ -98,23 +83,6 @@ const Note = React.createClass({
           <FlavorChart data={this.state.flavor} options={flavorChartOptions}/>
           */}
 
-          {/*
-          <label htmlFor=''>Tasting [Wheel]</label>
-          <input name='flavor.darkFruit' type='range' min='1' max='5' ref='flavor.darkFruit' onBlur={this.editField}/>
-          <input type='range' min='1' max='5' ref='flavor.citrusFruit' onBlur={this.editField}/>
-          <input type='range' min='1' max='5' ref='flavor.floral' onBlur={this.editField}/>
-          <input type='range' min='1' max='5' ref='flavor.spicy' onBlur={this.editField}/>
-          <input type='range' min='1' max='5' ref='flavor.herbal' onBlur={this.editField}/>
-          <input type='range' min='1' max='5' ref='flavor.malty' onBlur={this.editField}/>
-          <input type='range' min='1' max='5' ref='flavor.toffee' onBlur={this.editField}/>
-          <input type='range' min='1' max='5' ref='flavor.woody' onBlur={this.editField}/>
-          <input type='range' min='1' max='5' ref='flavor.tannic' onBlur={this.editField}/>
-          <input type='range' min='1' max='5' ref='flavor.char' onBlur={this.editField}/>
-          <input type='range' min='1' max='5' ref='flavor.sweet' onBlur={this.editField}/>
-          <input type='range' min='1' max='5' ref='flavor.body' onBlur={this.editField}/>
-          <input type='range' min='1' max='5' ref='flavor.balance' onBlur={this.editField}/>
-          <input type='range' min='1' max='5' ref='flavor.finish' onBlur={this.editField}/>
-          */}
           <footer>
             <button type='submit'>Save</button>
           </footer>
