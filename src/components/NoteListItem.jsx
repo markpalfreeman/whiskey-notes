@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
+import RatingStars from './RatingStars'
 
 /*
  * USAGE:
@@ -21,20 +22,10 @@ const NoteListItem = React.createClass({
 
   render () {
     const { note, id } = this.props
-    let rating = ''
-    let i = 0
-
-    if (note.rating) {
-      while (i < note.rating) {
-        i++
-        rating += '✩'
-      }
-      rating = <span className='note-list__note__rating'>{rating}</span>
-    }
 
     return (
       <li className='note-list__note'>
-        <Link to={`/notes/${id}`} className='note-list__note__title'>{note.name}</Link> {rating}
+        <Link to={`/notes/${id}`} className='note-list__note__title'>{note.name}</Link> <RatingStars rating={note.rating}/>
         <button onClick={this.handleDeleteNote} className='note-list__note__delete'>&times;</button>
       </li>
     )
