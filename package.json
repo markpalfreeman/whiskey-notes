@@ -13,7 +13,7 @@
   "author": "Mark Palfreeman <markpalfreeman@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.9.1",
+    "axios": "^0.10.0",
     "chart.js": "^2.0.2",
     "hjs-webpack": "^8.1.0",
     "re-base": "^1.5.1",
