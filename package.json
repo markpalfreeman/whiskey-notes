@@ -15,7 +15,7 @@
   "dependencies": {
     "axios": "^0.15.1",
     "chart.js": "^2.0.2",
-    "hjs-webpack": "^8.1.0",
+    "hjs-webpack": "^8.3.0",
     "re-base": "^1.5.1",
     "react": "^15.0.1",
     "react-chartjs": "^0.7.3",
