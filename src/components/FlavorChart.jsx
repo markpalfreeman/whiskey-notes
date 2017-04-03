@@ -27,7 +27,7 @@ const Flavor = React.createClass({
     chartData.datasets[0].data = Object.keys(this.props.data).map((flav) => (this.props.data[flav]))
 
     return (
-      <Radar data={chartData} width={window.innerWidth - 20} height={window.innerWidth - 20}/>
+      <Radar data={chartData} width={window.innerWidth - 20} height={window.innerWidth - 20} />
     )
   }
 })

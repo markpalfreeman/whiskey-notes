@@ -61,24 +61,24 @@ const Note = React.createClass({
       <div className=''>
         <form name='whiskey-note' className='whiskey-note' ref='whiskey-note' onSubmit={this.handleSave}>
           <label htmlFor=''>Whiskey Name</label>
-          <input name='name' type='text' ref='name' onChange={this.editField} value={this.state.name}/><br/>
+          <input name='name' type='text' ref='name' onChange={this.editField} value={this.state.name} /><br />
           <label htmlFor=''>Distiller</label>
-          <input name='distiller' type='text' ref='distiller' onChange={this.editField} value={this.state.distiller}/><br/>
+          <input name='distiller' type='text' ref='distiller' onChange={this.editField} value={this.state.distiller} /><br />
           <label htmlFor=''>Age</label>
-          <input name='age' type='text' ref='age' onChange={this.editField} value={this.state.age}/><br/>
+          <input name='age' type='text' ref='age' onChange={this.editField} value={this.state.age} /><br />
           <label htmlFor=''>Origin</label>
-          <input name='origin' type='text' ref='origin' onChange={this.editField} value={this.state.origin}/><br/>
+          <input name='origin' type='text' ref='origin' onChange={this.editField} value={this.state.origin} /><br />
           <label htmlFor=''>Price</label>
-          <input name='price' type='text' ref='price' onChange={this.editField} value={this.state.price}/><br/>
+          <input name='price' type='text' ref='price' onChange={this.editField} value={this.state.price} /><br />
           <label htmlFor=''>Date Sampled</label>
-          <input name='date' type='date' ref='date' onChange={this.editField} value={this.state.date}/><br/>
-          <label htmlFor=''>Rating: <RatingStars rating={this.state.rating}/></label>
-          <input name='rating' type='range' min='1' max='5' ref='rating' onChange={this.editField} value={this.state.rating}/><br/>
+          <input name='date' type='date' ref='date' onChange={this.editField} value={this.state.date} /><br />
+          <label htmlFor=''>Rating: <RatingStars rating={this.state.rating} /></label>
+          <input name='rating' type='range' min='1' max='5' ref='rating' onChange={this.editField} value={this.state.rating} /><br />
           <label htmlFor=''>Color: <span className=''>{ratings[this.state.color]}</span></label>
-          <input name='color' type='range' className='whiskey-note__color' min='0' max='6' ref='color' onChange={this.editField} value={this.state.color}/>
+          <input name='color' type='range' className='whiskey-note__color' min='0' max='6' ref='color' onChange={this.editField} value={this.state.color} />
 
           <label htmlFor=''>Notes</label>
-          <textarea name='notes' ref='notes' onChange={this.editField} value={this.state.notes} rows='5'/><br/>
+          <textarea name='notes' ref='notes' onChange={this.editField} value={this.state.notes} rows='5' /><br />
 
           {/*
           <label htmlFor=''>Flavor <em>(Experimental &amp; broken!)</em></label>
