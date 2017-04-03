@@ -24,7 +24,6 @@
     "webfontloader": "^1.6.24"
   },
   "devDependencies": {
-    "babel": "^6.5.2",
     "babel-cli": "^6.24.0",
     "babel-core": "^6.7.4",
     "babel-eslint": "^6.0.0",
