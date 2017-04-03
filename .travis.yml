@@ -2,7 +2,12 @@ language: node_js
 node_js:
   - "node"
 
+branches:
+  only:
+    - master
+
 deploy:
   provider: surge
   project: ./public/
   domain: whiskeynot.es
+
