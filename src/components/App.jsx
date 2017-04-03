@@ -44,7 +44,7 @@ const App = React.createClass({
 
   deleteNote (id) {
     const { notes } = this.state
-    if (confirm('Are you sure you delete this note?')) {
+    if (window.confirm('Are you sure you delete this note?')) {
       delete notes[id]
 
       this.setState({
@@ -56,7 +56,7 @@ const App = React.createClass({
   render () {
     return (
       <div>
-        <Header/>
+        <Header />
         <main className='page'>
           {React.cloneElement(this.props.children, {
             notes: this.state.notes,

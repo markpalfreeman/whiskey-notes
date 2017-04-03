@@ -20,13 +20,13 @@ WebFont.load({
 const Index = () => (
   <Router history={browserHistory}>
     <Route path='/' component={App}>
-      <IndexRoute component={NoteList}/> {/* Fix to share layout across app but drop in page content */}
-      <Route path='about' component={About}/>
+      <IndexRoute component={NoteList} /> {/* Fix to share layout across app but drop in page content */}
+      <Route path='about' component={About} />
       <Route path='notes' component={NotesPage}>
-        <IndexRoute component={NoteList}/>
-        <Route path=':notePath' component={Note}/>
+        <IndexRoute component={NoteList} />
+        <Route path=':notePath' component={Note} />
       </Route>
-      <Route path='*' component={FourOhFour}/>
+      <Route path='*' component={FourOhFour} />
     </Route>
   </Router>
 )
