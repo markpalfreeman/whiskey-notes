@@ -6,6 +6,9 @@ branches:
   only:
     - master
 
+before_deploy:
+  - test $TRAVIS_TEST_RESULT = 0 && npm run build
+
 deploy:
   provider: surge
   project: ./public/
