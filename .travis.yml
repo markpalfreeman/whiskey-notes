@@ -11,6 +11,4 @@ before_deploy:
 
 deploy:
   provider: surge
-  project: ./public/
   domain: whiskeynot.es
-
