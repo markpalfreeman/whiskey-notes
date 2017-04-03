@@ -17,22 +17,18 @@ WebFont.load({
   }
 })
 
-const Index = React.createClass({
-  render () {
-    return (
-      <Router history={browserHistory}>
-        <Route path='/' component={App}>
-          <IndexRoute component={NoteList}/> {/* Fix to share layout across app but drop in page content */}
-          <Route path='about' component={About}/>
-          <Route path='notes' component={NotesPage}>
-            <IndexRoute component={NoteList}/>
-            <Route path=':notePath' component={Note}/>
-          </Route>
-          <Route path='*' component={FourOhFour}/>
-        </Route>
-      </Router>
-    )
-  }
-})
+const Index = () => (
+  <Router history={browserHistory}>
+    <Route path='/' component={App}>
+      <IndexRoute component={NoteList}/> {/* Fix to share layout across app but drop in page content */}
+      <Route path='about' component={About}/>
+      <Route path='notes' component={NotesPage}>
+        <IndexRoute component={NoteList}/>
+        <Route path=':notePath' component={Note}/>
+      </Route>
+      <Route path='*' component={FourOhFour}/>
+    </Route>
+  </Router>
+)
 
 ReactDOM.render(<Index />, document.getElementById('root'))
