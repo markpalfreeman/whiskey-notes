@@ -2,11 +2,6 @@ import React from 'react'
 import { Link } from 'react-router'
 import RatingStars from './RatingStars'
 
-/*
- * USAGE:
- * <NotesList notes={data.notes}/>
- */
-
 const { object, func } = React.PropTypes
 
 const NoteListItem = React.createClass({

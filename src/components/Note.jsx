@@ -89,8 +89,6 @@ const Note = React.createClass({
             <button type='submit'>Save</button>
           </footer>
         </form>
-
-        {/* <pre><code>{JSON.stringify(this.state, null, 2)}</code></pre> */}
       </div>
     )
   }

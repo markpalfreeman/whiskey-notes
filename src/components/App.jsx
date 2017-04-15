@@ -2,8 +2,7 @@ import React from 'react'
 import WebFont from 'webfontloader'
 import Header from './Header'
 
-import Rebase from 're-base'
-const base = Rebase.createClass('https://whiskey-notes.firebaseio.com')
+import database from '../firebase.js'
 
 const { any } = React.PropTypes
 
@@ -14,7 +13,8 @@ const App = React.createClass({
 
   getInitialState () {
     return {
-      notes: []
+      notes: [],
+      loading: true
     }
   },
 
@@ -27,12 +27,19 @@ const App = React.createClass({
   },
 
   componentDidMount () {
-    // Sync data from Firebase
-    base.syncState('notes', {
+    // Sync data from Firebase (store as ref to unbind)
+    this.ref = database.syncState('notes', {
       context: this,
       state: 'notes',
-      asArray: true
+      asArray: true,
+      then () {
+        this.setState({ loading: false })
+      }
     })
+  },
+
+  componentWillUnmount () {
+    database.removeBinding(this.ref)
   },
 
   saveNote (note) {
@@ -67,11 +74,12 @@ const App = React.createClass({
       <div>
         <Header />
         <main className='page'>
-          {React.cloneElement(this.props.children, {
+          {!this.state.loading && React.cloneElement(this.props.children, {
             notes: this.state.notes,
             saveNote: this.saveNote,
             deleteNote: this.deleteNote
           })}
+          {this.state.loading && 'Loading your notes...'}
         </main>
       </div>
     )

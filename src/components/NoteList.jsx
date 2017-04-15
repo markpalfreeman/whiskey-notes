@@ -1,11 +1,6 @@
 import React from 'react'
 import NoteListItem from './NoteListItem'
 
-/*
- * USAGE:
- * <NotesList notes={data.notes}/>
- */
-
 const { array, func } = React.PropTypes
 
 const NotesList = React.createClass({
