@@ -1,4 +1,5 @@
 import React from 'react'
+import WebFont from 'webfontloader'
 import Header from './Header'
 
 import Rebase from 're-base'
@@ -15,6 +16,14 @@ const App = React.createClass({
     return {
       notes: []
     }
+  },
+
+  componentWillMount () {
+    WebFont.load({
+      google: {
+        families: ['Rubik:700']
+      }
+    })
   },
 
   componentDidMount () {

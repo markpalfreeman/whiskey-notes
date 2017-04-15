@@ -9,13 +9,6 @@ import NotesPage from './pages/NotesPage'
 import NoteList from './components/NoteList'
 import Note from './components/Note'
 import FourOhFour from './pages/404'
-import WebFont from 'webfontloader'
-
-WebFont.load({
-  google: {
-    families: ['Rubik:700']
-  }
-})
 
 const Index = () => (
   <Router history={browserHistory}>
