@@ -53,14 +53,11 @@ const App = React.createClass({
 
   deleteNote (id) {
     const { notes } = this.state
-
     if (window.confirm('Are you sure you delete this note?')) {
-      const filteredNotes = notes.filter(note => (
-        note.id !== id
-      ))
+      delete notes[id]
 
       this.setState({
-        notes: filteredNotes
+        notes: notes
       })
     }
   },
