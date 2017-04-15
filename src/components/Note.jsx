@@ -83,9 +83,9 @@ const Note = React.createClass({
           <label htmlFor=''>Date Sampled</label>
           <input name='date' type='date' ref='date' onChange={this.editField} value={this.state.date} /><br />
           <label htmlFor=''>Rating: <RatingStars rating={this.state.rating} /></label>
-          <input name='rating' type='range' min='1' max='5' ref='rating' onChange={this.editField} value={this.state.rating} /><br />
-          <label htmlFor=''>Color: <span className=''>{ratings[this.state.color]}</span></label>
-          <input name='color' type='range' className='whiskey-note__color' min='0' max='6' ref='color' onChange={this.editField} value={this.state.color} />
+          <input name='rating' type='range' min='1' max='5' defaultValue='3' ref='rating' onChange={this.editField} value={this.state.rating} /><br />
+          <label htmlFor=''>Color: <span className='whiskey-note__range-rating'>{ratings[this.state.color]}</span></label>
+          <input name='color' type='range' className='whiskey-note__color' min='0' max='6' defaultValue='3' ref='color' onChange={this.editField} value={this.state.color} />
 
           <label htmlFor=''>Notes</label>
           <textarea name='notes' ref='notes' onChange={this.editField} value={this.state.notes} rows='5' /><br />
