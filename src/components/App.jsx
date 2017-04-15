@@ -1,4 +1,5 @@
 import React from 'react'
+import WebFont from 'webfontloader'
 import Header from './Header'
 
 import Rebase from 're-base'
@@ -15,6 +16,14 @@ const App = React.createClass({
     return {
       notes: []
     }
+  },
+
+  componentWillMount () {
+    WebFont.load({
+      google: {
+        families: ['Rubik:700']
+      }
+    })
   },
 
   componentDidMount () {
@@ -44,11 +53,14 @@ const App = React.createClass({
 
   deleteNote (id) {
     const { notes } = this.state
+
     if (window.confirm('Are you sure you delete this note?')) {
-      delete notes[id]
+      const filteredNotes = notes.filter(note => (
+        note.id !== id
+      ))
 
       this.setState({
-        notes: notes
+        notes: filteredNotes
       })
     }
   },
