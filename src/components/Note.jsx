@@ -12,11 +12,12 @@ const Note = React.createClass({
     params: object,
     location: object,
     notes: array,
+    addNote: func,
     saveNote: func
   },
 
   getInitialState () {
-    return this.getCurrentNote(this.props) || {}
+    return this.getCurrentNote(this.props)
   },
 
   componentWillReceiveProps (nextProps) {
@@ -38,7 +39,7 @@ const Note = React.createClass({
       flavor: {}
     }
 
-    if (props.params.notePath === 'new') {
+    if (props && props.params.notePath === 'new') {
       return note
     } else {
       note = props.notes[this.props.params.notePath]
@@ -52,7 +53,16 @@ const Note = React.createClass({
 
   handleSave (event) {
     event.preventDefault()
-    this.props.saveNote(this.state)
+    const note = this.state
+
+    if (note.key) {
+      // If editing existing note, update it
+      this.props.saveNote(note)
+    } else {
+      // Otherwise, create new
+      this.props.addNote(note)
+    }
+
     browserHistory.push('/')
   },
 

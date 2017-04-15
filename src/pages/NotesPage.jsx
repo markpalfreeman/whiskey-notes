@@ -8,22 +8,19 @@ const NotesPage = React.createClass({
     location: object,
     params: object,
     notes: array,
-    saveNote: func,
-    deleteNote: func
+    addNote: func.isRequired,
+    saveNote: func.isRequired,
+    deleteNote: func.isRequired
   },
 
   render () {
-    const { notes, saveNote, deleteNote } = this.props
-
-    // // Sorta hacky?
-    // if (location.pathname === '/notes/new') {
-    //   headerTitle = 'New note:'
-    // }
+    const { notes, addNote, saveNote, deleteNote } = this.props
 
     return (
       <article>
         {React.cloneElement(this.props.children, {
           notes: notes,
+          addNote: addNote,
           saveNote: saveNote,
           deleteNote: deleteNote
         })}

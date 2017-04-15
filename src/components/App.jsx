@@ -42,30 +42,23 @@ const App = React.createClass({
     database.removeBinding(this.ref)
   },
 
-  saveNote (note) {
-    const { notes } = this.state
-
-    if (note.id) {
-      // If editing existing note
-      notes[note.id] = note
-    } else {
-      // Otherwise, add it to notes list
-      notes.push(note)
-    }
-
-    this.setState({
-      notes: this.state.notes
-    })
+  addNote (note) {
+    const notes = this.state.notes.concat([note])
+    this.setState({ notes })
   },
 
-  deleteNote (id) {
+  saveNote (note) {
+    const { notes } = this.state
+    notes[note.key] = note
+    this.setState({ notes })
+  },
+
+  deleteNote (key) {
     const { notes } = this.state
     if (window.confirm('Are you sure you delete this note?')) {
-      delete notes[id]
+      delete notes[key]
 
-      this.setState({
-        notes: notes
-      })
+      this.setState({ notes })
     }
   },
 
@@ -76,6 +69,7 @@ const App = React.createClass({
         <main className='page'>
           {!this.state.loading && React.cloneElement(this.props.children, {
             notes: this.state.notes,
+            addNote: this.addNote,
             saveNote: this.saveNote,
             deleteNote: this.deleteNote
           })}
