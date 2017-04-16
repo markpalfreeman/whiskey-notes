@@ -26,7 +26,7 @@ const NotesPage = React.createClass({
       <article>
         {!this.props.loading
           ? <NoteList {...this.props} />
-          : <p>Loading notes...</p>}
+          : <p>Loading...</p>}
       </article>
     )
   }

@@ -29,8 +29,10 @@ const App = React.createClass({
     database.authGetOAuthRedirectResult('google', (error, result) => {
       if (error) console.log('Unable to authenticate user:', error)
       if (result.user) {
-        this.setState({ user: result.user })
-        browserHistory.push('/')
+        this.setState({
+          user: result.user,
+          loading: false
+        })
       }
     })
   },
@@ -82,6 +84,8 @@ const App = React.createClass({
   },
 
   signIn () {
+    this.setState({ loading: true })
+    browserHistory.push('/')
     database.authWithOAuthRedirect('google', (error, user) => {
       if (error) console.log('Unable to authenticate user:', error)
       return
