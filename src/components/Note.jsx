@@ -39,10 +39,10 @@ const Note = React.createClass({
       flavor: {}
     }
 
-    if (props && props.params.notePath === 'new') {
+    if (props && props.params.note === 'new') {
       return note
     } else {
-      note = props.notes[this.props.params.notePath]
+      note = props.notes[this.props.params.note]
       return note
     }
   },

@@ -1,6 +1,8 @@
 import React from 'react'
+import NoteList from '../components/NoteList'
+import { browserHistory } from 'react-router'
 
-const { object, element, array, func } = React.PropTypes
+const { array, bool, element, func, object } = React.PropTypes
 
 const NotesPage = React.createClass({
   propTypes: {
@@ -8,22 +10,23 @@ const NotesPage = React.createClass({
     location: object,
     params: object,
     notes: array,
+    loading: bool,
     addNote: func.isRequired,
     saveNote: func.isRequired,
-    deleteNote: func.isRequired
+    deleteNote: func.isRequired,
+    user: object
+  },
+
+  componentWillReceiveProps (nextProps) {
+    if (!nextProps.user) browserHistory.push('/login')
   },
 
   render () {
-    const { notes, addNote, saveNote, deleteNote } = this.props
-
     return (
       <article>
-        {React.cloneElement(this.props.children, {
-          notes: notes,
-          addNote: addNote,
-          saveNote: saveNote,
-          deleteNote: deleteNote
-        })}
+        {!this.props.loading
+          ? <NoteList {...this.props} />
+          : <p>Loading notes...</p>}
       </article>
     )
   }

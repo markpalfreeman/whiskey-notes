@@ -1,8 +1,8 @@
 import React from 'react'
 import WebFont from 'webfontloader'
+import { browserHistory } from 'react-router'
 import Header from './Header'
-
-import database from '../firebase.js'
+import database from '../firebase'
 
 const { any } = React.PropTypes
 
@@ -13,8 +13,9 @@ const App = React.createClass({
 
   getInitialState () {
     return {
-      notes: [],
-      loading: true
+      notes: null,
+      loading: true,
+      user: null
     }
   },
 
@@ -27,13 +28,22 @@ const App = React.createClass({
   },
 
   componentDidMount () {
-    // Sync data from Firebase (store as ref to unbind)
-    this.ref = database.syncState('notes', {
-      context: this,
-      state: 'notes',
-      asArray: true,
-      then () {
-        this.setState({ loading: false })
+    // Check for logged-in user and attach notes to state
+    database.onAuth((user) => {
+      if (user) {
+        this.setState({ user })
+
+        this.ref = database.syncState(`users/${user.uid}/notes`, {
+          context: this,
+          state: 'notes',
+          asArray: true,
+          then () {
+            this.setState({ loading: false })
+          }
+        })
+      } else {
+        // If user was logged out, reflect on state
+        this.setState({ user: null })
       }
     })
   },
@@ -62,18 +72,37 @@ const App = React.createClass({
     }
   },
 
+  signIn () {
+    database.authWithOAuthPopup('google', (error, user) => {
+      if (error) console.log('Unable to authenticate user')
+      browserHistory.push('/')
+    })
+  },
+
+  signOut () {
+    database.unauth()
+    this.setState({ user: null })
+    browserHistory.push('/')
+  },
+
   render () {
+    const { notes, loading, user } = this.state
+    const { addNote, saveNote, deleteNote, signIn, signOut } = this
+
     return (
       <div>
-        <Header />
+        <Header signIn={signIn} signOut={signOut} user={user}/>
         <main className='page'>
-          {!this.state.loading && React.cloneElement(this.props.children, {
-            notes: this.state.notes,
-            addNote: this.addNote,
-            saveNote: this.saveNote,
-            deleteNote: this.deleteNote
+          {React.cloneElement(this.props.children, {
+            loading,
+            notes,
+            addNote,
+            saveNote,
+            deleteNote,
+            signIn,
+            signOut,
+            user
           })}
-          {this.state.loading && 'Loading your notes...'}
         </main>
       </div>
     )

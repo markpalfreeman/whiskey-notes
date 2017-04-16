@@ -19,7 +19,7 @@ const NoteListItem = React.createClass({
 
     return (
       <li className='note-list__note'>
-        <Link to={`/notes/${note.key}`} params={{notePath: note.key}} className='note-list__note__title'>{note.name}</Link>
+        <Link to={`/notes/${note.key}`} params={{note: note.key}} className='note-list__note__title'>{note.name}</Link>
         <div className='note-list__note__rating'>
           <RatingStars rating={note.rating} />
           <button onClick={this.handleDeleteNote} className='note-list__note__delete'>&times;</button>
