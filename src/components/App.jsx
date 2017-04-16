@@ -25,6 +25,14 @@ const App = React.createClass({
         families: ['Rubik:700']
       }
     })
+
+    database.authGetOAuthRedirectResult('google', (error, result) => {
+      if (error) console.log('Unable to authenticate user:', error)
+      if (result.user) {
+        this.setState({ user: result.user })
+        browserHistory.push('/')
+      }
+    })
   },
 
   componentDidMount () {
@@ -74,9 +82,9 @@ const App = React.createClass({
   },
 
   signIn () {
-    database.authWithOAuthPopup('google', (error, user) => {
+    database.authWithOAuthRedirect('google', (error, user) => {
       if (error) console.log('Unable to authenticate user:', error)
-      browserHistory.push('/')
+      return
     })
   },
 
