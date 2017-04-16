@@ -41,6 +41,7 @@ const App = React.createClass({
             this.setState({ loading: false })
           }
         })
+        browserHistory.push('/')
       } else {
         // If user was logged out, reflect on state
         this.setState({ user: null })
@@ -74,7 +75,7 @@ const App = React.createClass({
 
   signIn () {
     database.authWithOAuthPopup('google', (error, user) => {
-      if (error) console.log('Unable to authenticate user')
+      if (error) console.log('Unable to authenticate user:', error)
       browserHistory.push('/')
     })
   },

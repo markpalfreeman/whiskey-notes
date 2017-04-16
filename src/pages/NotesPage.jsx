@@ -17,8 +17,8 @@ const NotesPage = React.createClass({
     user: object
   },
 
-  componentWillReceiveProps (nextProps) {
-    if (!nextProps.user) browserHistory.push('/login')
+  componentWillUpdate (nextProps) {
+    if (!this.props.user || !nextProps.user) browserHistory.push('/login')
   },
 
   render () {
