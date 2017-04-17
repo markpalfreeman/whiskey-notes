@@ -88,7 +88,6 @@ const App = React.createClass({
     browserHistory.push('/')
     database.authWithOAuthRedirect('google', (error, user) => {
       if (error) console.log('Unable to authenticate user:', error)
-      return
     })
   },
 
@@ -104,7 +103,7 @@ const App = React.createClass({
 
     return (
       <div>
-        <Header signIn={signIn} signOut={signOut} user={user}/>
+        <Header signIn={signIn} signOut={signOut} user={user} />
         <main className='page'>
           {React.cloneElement(this.props.children, {
             loading,

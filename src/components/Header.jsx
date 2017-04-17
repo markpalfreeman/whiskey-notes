@@ -9,9 +9,9 @@ const Header = ({ signIn, signOut, user }) => (
     <nav className='header__nav'>
       {user
         ? <div>
-            <button className='header__auth-button' onClick={signOut}>Sign out</button>
-            <Link to='/notes/new' params={{ path: 'new' }} className='header__nav__link'>+</Link>
-          </div>
+          <button className='header__auth-button' onClick={signOut}>Sign out</button>
+          <Link to='/notes/new' params={{ path: 'new' }} className='header__nav__link'>+</Link>
+        </div>
         : <button className='header__auth-button' onClick={signIn}>Sign in</button>}
     </nav>
   </header>
