@@ -21,7 +21,7 @@ const RatingStars = React.createClass({
 
   render () {
     return (
-      <span className='rating-stars'>{this.renderStars()}</span>
+      <span className='whiskey-note__range-rating rating-stars'>{this.renderStars()}</span>
     )
   }
 })

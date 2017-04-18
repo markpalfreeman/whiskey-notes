@@ -12,11 +12,12 @@ const Note = React.createClass({
     params: object,
     location: object,
     notes: array,
+    addNote: func,
     saveNote: func
   },
 
   getInitialState () {
-    return this.getCurrentNote(this.props) || {}
+    return this.getCurrentNote(this.props)
   },
 
   componentWillReceiveProps (nextProps) {
@@ -38,10 +39,10 @@ const Note = React.createClass({
       flavor: {}
     }
 
-    if (props.params.notePath === 'new') {
+    if (props && props.params.note === 'new') {
       return note
     } else {
-      note = props.notes[this.props.params.notePath]
+      note = props.notes[this.props.params.note]
       return note
     }
   },
@@ -52,7 +53,16 @@ const Note = React.createClass({
 
   handleSave (event) {
     event.preventDefault()
-    this.props.saveNote(this.state)
+    const note = this.state
+
+    if (note.key) {
+      // If editing existing note, update it
+      this.props.saveNote(note)
+    } else {
+      // Otherwise, create new
+      this.props.addNote(note)
+    }
+
     browserHistory.push('/')
   },
 
@@ -73,9 +83,9 @@ const Note = React.createClass({
           <label htmlFor=''>Date Sampled</label>
           <input name='date' type='date' ref='date' onChange={this.editField} value={this.state.date} /><br />
           <label htmlFor=''>Rating: <RatingStars rating={this.state.rating} /></label>
-          <input name='rating' type='range' min='1' max='5' ref='rating' onChange={this.editField} value={this.state.rating} /><br />
-          <label htmlFor=''>Color: <span className=''>{ratings[this.state.color]}</span></label>
-          <input name='color' type='range' className='whiskey-note__color' min='0' max='6' ref='color' onChange={this.editField} value={this.state.color} />
+          <input name='rating' type='range' min='1' max='5' defaultValue='3' ref='rating' onChange={this.editField} value={this.state.rating} /><br />
+          <label htmlFor=''>Color: <span className='whiskey-note__range-rating'>{ratings[this.state.color]}</span></label>
+          <input name='color' type='range' className='whiskey-note__color' min='0' max='6' defaultValue='3' ref='color' onChange={this.editField} value={this.state.color} />
 
           <label htmlFor=''>Notes</label>
           <textarea name='notes' ref='notes' onChange={this.editField} value={this.state.notes} rows='5' /><br />
@@ -89,8 +99,6 @@ const Note = React.createClass({
             <button type='submit'>Save</button>
           </footer>
         </form>
-
-        {/* <pre><code>{JSON.stringify(this.state, null, 2)}</code></pre> */}
       </div>
     )
   }

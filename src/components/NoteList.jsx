@@ -1,11 +1,6 @@
 import React from 'react'
 import NoteListItem from './NoteListItem'
 
-/*
- * USAGE:
- * <NotesList notes={data.notes}/>
- */
-
 const { array, func } = React.PropTypes
 
 const NotesList = React.createClass({
@@ -20,7 +15,7 @@ const NotesList = React.createClass({
     return (
       <ul className='note-list'>
         {notes.map((note, index) => (
-          <NoteListItem note={note} deleteNote={deleteNote} id={index} key={index} />
+          <NoteListItem note={note} deleteNote={deleteNote} key={index} />
         ))}
       </ul>
     )

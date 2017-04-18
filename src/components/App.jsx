@@ -1,9 +1,8 @@
 import React from 'react'
 import WebFont from 'webfontloader'
+import { browserHistory } from 'react-router'
 import Header from './Header'
-
-import Rebase from 're-base'
-const base = Rebase.createClass('https://whiskey-notes.firebaseio.com')
+import database from '../firebase'
 
 const { any } = React.PropTypes
 
@@ -14,7 +13,9 @@ const App = React.createClass({
 
   getInitialState () {
     return {
-      notes: []
+      notes: null,
+      loading: true,
+      user: null
     }
   },
 
@@ -24,53 +25,95 @@ const App = React.createClass({
         families: ['Rubik:700']
       }
     })
+
+    database.authGetOAuthRedirectResult('google', (error, result) => {
+      if (error) console.log('Unable to authenticate user:', error)
+      if (result.user) {
+        this.setState({
+          user: result.user,
+          loading: false
+        })
+      }
+    })
   },
 
   componentDidMount () {
-    // Sync data from Firebase
-    base.syncState('notes', {
-      context: this,
-      state: 'notes',
-      asArray: true
+    // Check for logged-in user and attach notes to state
+    database.onAuth((user) => {
+      if (user) {
+        this.setState({ user })
+
+        this.ref = database.syncState(`users/${user.uid}/notes`, {
+          context: this,
+          state: 'notes',
+          asArray: true,
+          then () {
+            this.setState({ loading: false })
+          }
+        })
+        browserHistory.push('/')
+      } else {
+        // If user was logged out, reflect on state
+        this.setState({ user: null })
+      }
     })
+  },
+
+  componentWillUnmount () {
+    database.removeBinding(this.ref)
+  },
+
+  addNote (note) {
+    const notes = this.state.notes.concat([note])
+    this.setState({ notes })
   },
 
   saveNote (note) {
     const { notes } = this.state
+    notes[note.key] = note
+    this.setState({ notes })
+  },
 
-    if (note.id) {
-      // If editing existing note
-      notes[note.id] = note
-    } else {
-      // Otherwise, add it to notes list
-      notes.push(note)
+  deleteNote (key) {
+    const { notes } = this.state
+    if (window.confirm('Are you sure you delete this note?')) {
+      delete notes[key]
+
+      this.setState({ notes })
     }
+  },
 
-    this.setState({
-      notes: this.state.notes
+  signIn () {
+    this.setState({ loading: true })
+    browserHistory.push('/')
+    database.authWithOAuthRedirect('google', (error, user) => {
+      if (error) console.log('Unable to authenticate user:', error)
     })
   },
 
-  deleteNote (id) {
-    const { notes } = this.state
-    if (window.confirm('Are you sure you delete this note?')) {
-      delete notes[id]
-
-      this.setState({
-        notes: notes
-      })
-    }
+  signOut () {
+    database.unauth()
+    this.setState({ user: null })
+    browserHistory.push('/')
   },
 
   render () {
+    const { notes, loading, user } = this.state
+    const { addNote, saveNote, deleteNote, signIn, signOut } = this
+
     return (
       <div>
-        <Header />
+        <Header signIn={signIn} signOut={signOut} user={user} />
         <main className='page'>
           {React.cloneElement(this.props.children, {
-            notes: this.state.notes,
-            saveNote: this.saveNote,
-            deleteNote: this.deleteNote
+            loading,
+            notes,
+            addNote,
+            saveNote,
+            deleteNote,
+            signIn,
+            signOut,
+            user
           })}
         </main>
       </div>
