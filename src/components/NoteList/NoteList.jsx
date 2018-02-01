@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function NoteList() {
-  return <div>NoteList</div>
+  return <div>NoteList</div>;
 }
 
-export default NoteList
+export default NoteList;
