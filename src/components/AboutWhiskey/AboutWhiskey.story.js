@@ -1,5 +1,5 @@
-import React from "react";
-import { storiesOf } from "@storybook/react";
-import AboutWhiskey from "./AboutWhiskey";
+import React from 'react'
+import { storiesOf } from '@storybook/react'
+import AboutWhiskey from './AboutWhiskey'
 
-storiesOf("AboutWhiskey", module).add("empty", () => <AboutWhiskey />);
+storiesOf('AboutWhiskey', module).add('empty', () => <AboutWhiskey />)
