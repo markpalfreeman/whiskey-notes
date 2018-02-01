@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react'
 
 function Note(props) {
-  return <div>{props.match.params.id}</div>;
+  return <div>{props.note.name}</div>
 }
 
-export default Note;
+export default Note
