@@ -12,13 +12,13 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "lint": "eslint --ext .js,.jsx ./",
-    "test": "CI=true react-scripts test --env=jsdom",
-    "test:watch": "react-scripts test --env=jsdom",
+    "test": "react-scripts test --env=jsdom",
+    "test:CI": "CI=true react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -c src/components/.storybook -p 4000",
     "storybook:build": "build-storybook"
   },
-  "precommit": ["lint", "test"],
+  "precommit": ["lint", "test:CI"],
   "devDependencies": {
     "@storybook/addon-actions": "^3.3.9",
     "@storybook/addon-options": "^3.3.9",
