@@ -11,7 +11,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={NoteList} />
+          <Route exact path="/" render={() => <NoteList notes={whiskeyNotes} />} />
           <Route path="/new" component={Note} />
           <Route
             path="/note/:id"
