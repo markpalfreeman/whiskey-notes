@@ -18,7 +18,7 @@ function Note({ note }) {
       <label>
         Category:
         <select>
-          <option>{note.category}</option>
+          <option value={note.category}>{note.category}</option>
         </select>
       </label>
       <label>
