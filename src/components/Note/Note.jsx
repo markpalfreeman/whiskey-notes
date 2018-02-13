@@ -18,7 +18,10 @@ function Note({ note }) {
       <label>
         Category:
         <select>
-          <option>{note.category}</option>
+          <option value={note.category}>{note.category}</option>
+          <option value="Bourbon">Bourbon</option>
+          <option value="American Single Malt">American Single Malt</option>
+          <option value="Rye">Rye</option>
         </select>
       </label>
       <label>

@@ -6,16 +6,28 @@ import About from './components/AboutWhiskey/AboutWhiskey'
 import whiskeyNotes from './data'
 import './App.css'
 
+const emptyNote = {
+  id: null,
+  name: null,
+  distiller: null,
+  age: null,
+  category: null,
+  color: null,
+  rating: null,
+  country: null,
+  tastingNotes: null
+}
+
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
         <Switch>
           <Route exact path="/" render={() => <NoteList notes={whiskeyNotes} />} />
-          <Route path="/new" component={Note} />
+          <Route path="/new" render={() => <Note note={emptyNote} />} />
           <Route
             path="/note/:id"
-            component={({ match }) => (
+            render={({ match }) => (
               <Note note={whiskeyNotes.find(note => note.id === +match.params.id)} />
             )}
           />
