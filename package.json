@@ -10,8 +10,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "lint": "eslint --ext .js,.jsx ./",
+    "build": "react-scripts build && cp build/index.html build/404.html",
+    "lint": "eslint ./src --ext .js,.jsx",
     "test": "react-scripts test --env=jsdom",
     "test:CI": "CI=true react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
