@@ -5,7 +5,7 @@ function NoteList({ notes }) {
   return (
     <div>
       {notes.map(whiskey => (
-        <Link key={whiskey.id} to={`/note/${whiskey.id}`}>
+        <Link to={`/note/${whiskey.id}`} key={whiskey.id}>
           <div>
             <h3>{whiskey.name}</h3>
           </div>

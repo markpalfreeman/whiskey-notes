@@ -30,3 +30,9 @@
     transform: rotate(360deg);
   }
 }
+
+/* Calvin's CSS */
+
+label {
+  display: block;
+}

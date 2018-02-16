@@ -3,19 +3,7 @@ import React from 'react'
 class Note extends React.Component {
   constructor(props) {
     super(props)
-    const { note } = this.props
-    this.state = {
-      id: note.id,
-      name: note.name,
-      distiller: note.distiller,
-      age: note.age,
-      category: note.category,
-      color: note.color,
-      rating: note.rating,
-      country: note.country,
-      tastingNotes: note.tastingNotes
-    }
-
+    this.state = this.props.note
     this.updateNote = this.updateNote.bind(this)
   }
 
@@ -25,6 +13,7 @@ class Note extends React.Component {
   }
 
   render() {
+    const categories = ['Bourbon', 'Rye', 'American Single Malt']
     return (
       <form>
         <label>
@@ -46,8 +35,12 @@ class Note extends React.Component {
         </label>
         <label>
           Category:
-          <select name="category" onChange={this.updateNote}>
-            <option value={this.state.category}>{this.state.category}</option>
+          <select name="category" value={this.state.category} onChange={this.updateNote}>
+            {categories.map(category => (
+              <option value={category} key={category}>
+                {category}
+              </option>
+            ))}
           </select>
         </label>
         <label>
