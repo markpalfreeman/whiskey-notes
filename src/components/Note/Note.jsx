@@ -3,7 +3,9 @@ import React from 'react'
 class Note extends React.Component {
   constructor(props) {
     super(props)
-    this.state = this.props.note
+    this.state = {
+      ...this.props.note
+    }
     this.updateNote = this.updateNote.bind(this)
   }
 
