@@ -33,31 +33,6 @@
 
 /* Calvin's CSS */
 
-a,
-a:hover,
-a:active,
-a:focus,
-a:visited {
-  color: #222;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-h3 {
-  margin: 0;
-}
-
 label {
   display: block;
-}
-
-.whiskey-card {
-  margin: 0.5em;
-  padding: 0.5em;
-  border: solid 1px;
-  width: 25%;
-}
-
-.whiskey-details {
-  margin-left: 0.5em;
 }

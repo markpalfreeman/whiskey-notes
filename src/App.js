@@ -7,15 +7,15 @@ import whiskeyNotes from './data'
 import './App.css'
 
 const emptyNote = {
-  id: null,
-  name: null,
-  distiller: null,
-  age: null,
-  category: null,
-  color: null,
-  rating: null,
-  country: null,
-  tastingNotes: null
+  id: '',
+  name: '',
+  distiller: '',
+  age: '',
+  category: '',
+  color: '',
+  rating: '',
+  country: '',
+  tastingNotes: ''
 }
 
 class App extends Component {
