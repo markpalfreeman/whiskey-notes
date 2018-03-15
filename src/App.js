@@ -3,10 +3,11 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Note from './components/Note/Note'
 import NoteList from './components/NoteList/NoteList'
 import About from './components/AboutWhiskey/AboutWhiskey'
-import whiskeyNotes from './data'
+import firebase from './firebase'
 import './App.css'
 
 const emptyNote = {
+  date: '',
   id: '',
   name: '',
   distiller: '',
@@ -15,11 +16,32 @@ const emptyNote = {
   color: '',
   rating: '',
   country: '',
-  tastingNotes: ''
+  notes: ''
 }
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      whiskeyNotes: []
+    }
+  }
+
+  componentWillMount() {
+    this.ref = firebase.syncState('notes', {
+      context: this,
+      state: 'whiskeyNotes',
+      asArray: true
+    })
+  }
+
+  componentWillUnmount() {
+    firebase.removeBinding(this.ref)
+  }
+
   render() {
+    const { whiskeyNotes } = this.state
+
     return (
       <BrowserRouter>
         <Switch>
