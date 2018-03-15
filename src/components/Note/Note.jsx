@@ -11,7 +11,9 @@ class Note extends React.Component {
 
   updateNote(event) {
     const name = event.target.name
-    this.setState({ [name]: event.target.value })
+    this.setState({
+      [name]: event.target.value
+    })
   }
 
   render() {
@@ -46,6 +48,10 @@ class Note extends React.Component {
           </select>
         </label>
         <label>
+          Date tasted:
+          <input type="date" name="date" value={this.state.date} onChange={this.updateNote} />
+        </label>
+        <label>
           Color:
           <input type="text" name="color" value={this.state.color} onChange={this.updateNote} />
         </label>
@@ -62,8 +68,8 @@ class Note extends React.Component {
           <textarea
             cols="30"
             rows="10"
-            name="tastingNotes"
-            value={this.state.tastingNotes}
+            name="notes"
+            value={this.state.notes}
             onChange={this.updateNote}
           />
         </label>
