@@ -21,7 +21,7 @@ In the process of building this application, I wanted to try out technologies th
 Here's an ongoing list of things I implemented that were brand new or rusty for me:
 - [x] React
 - [x] React router
-- [ ] Firebase w/ re-base & user authentication (thanks [@tylermcginnis](https://github.com/tylermcginnis) for tools and examples)
+- [x] Firebase w/ re-base & user authentication (thanks [@tylermcginnis](https://github.com/tylermcginnis) for tools and examples)
 - [x] Webpack build w/ Babel (thanks [@henrikjoreteg](https://github.com/henrikjoreteg) for [hjs-webpack](https://github.com/HenrikJoreteg/hjs-webpack))
 - [x] Eslint with Standard (thanks [@btholt](https://github.com/btholt) for starter config)
 - [x] Sass mixins
