@@ -4,7 +4,7 @@ An online book of whiskey tasting notes, inspired by [33 Books](http://www.33boo
 I wanted a way to take notes on every whiskey I try in a simple, memorable format that has the fields I need.
 Paper and pencil are fine, but if you're out a bar/restaurant, having something quick and easy is key, and then the digital library is there forever.
 
-**Live app at [whiskeynot.es](http://whiskeynot.es)**
+**Live app at [https://whiskey-notes.netlify.app](https://whiskey-notes.netlify.app)**
 
 ### Features:
 - [x] Save note to database
